@@ -23,8 +23,8 @@ interface Props {
   sysInfoData: object;
 }
 
-export default class ClusterSections extends React.PureComponent<Props> {
+export default class StandAloneSysInfos extends React.PureComponent<Props> {
   render() {
-    return <div>ClusterSections</div>;
+    return <div>StandAloneSysInfos</div>;
   }
 }

@@ -18,13 +18,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import * as React from 'react';
+import { shallow } from 'enzyme';
+import HealthItem from '../HealthItem';
+import { HealthType } from '../../../types';
 
-interface Props {
-  sysInfoData: object;
-}
+it('should render correctly', () => {
+  expect(
+    shallow(
+      <HealthItem bigger={true} health={HealthType.RED} healthCauses={[{ message: 'foo' }]} />
+    )
+  ).toMatchSnapshot();
+});
 
-export default class StandAloneSections extends React.PureComponent<Props> {
-  render() {
-    return <div>StandAloneSections</div>;
-  }
-}
+it('should not render health causes', () => {
+  expect(
+    shallow(<HealthItem health={HealthType.GREEN} healthCauses={[{ message: 'foo' }]} />)
+  ).toMatchSnapshot();
+  expect(shallow(<HealthItem health={HealthType.YELLOW} healthCauses={[]} />)).toMatchSnapshot();
+});
